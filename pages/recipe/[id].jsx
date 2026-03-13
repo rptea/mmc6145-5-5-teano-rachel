@@ -5,7 +5,7 @@ import { getRecipe } from '../../util/recipe'
 import styles from '../../styles/recipe.module.css'
 
 // TODO: destructure id parameter from argument passed to getServerSideProps
-export async function getServerSideProps() {
+export async function getServerSideProps({ id }) {
   const props = {}
   // TODO: call getRecipe using id parameter and pass return value as recipeInfo prop
   return { props }
