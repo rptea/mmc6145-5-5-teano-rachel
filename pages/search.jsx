@@ -29,6 +29,8 @@ export default function Search({recipes}) {
     e.preventDefault()
     if (!query.trim()) return
     // TODO: Use router.replace with router.pathname + queryString to send query to getServerSideProps
+    const queryString = `?q=${encodeURIComponent(query.trim())}`
+    router.replace(router.pathname + queryString)
   }
   return (
     <>
@@ -51,7 +53,16 @@ export default function Search({recipes}) {
       {
         recipes?.length
         ? <section className={styles.results}>
-          {/* TODO: Render recipes with RecipePreview Component */}
+          {
+            recipes.map(recipe => (
+              <RecipePreview
+                key={recipe.id}
+                id={recipe.id}
+                title={recipe.title}
+                image={recipe.image}
+              />
+            ))
+          }
         </section>
         : <p className={styles.noResults}>No Recipes Found!</p>
       }
