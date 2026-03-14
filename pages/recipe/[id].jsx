@@ -9,8 +9,11 @@ export async function getServerSideProps({ params: {id } }) {
   const props = {}
   // TODO: call getRecipe using id parameter and pass return value as recipeInfo prop
   const recipeInfo = await getRecipe(id)
+
   if (recipeInfo) {
     props.recipeInfo = recipeInfo
+  } else {
+    props.recipeInfo = null
   }
 
   return { props }
